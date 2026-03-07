@@ -1,0 +1,59 @@
+---
+title: ''
+output: 
+  html_document:
+      self_contained: true
+date: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidycensus)
+library(tidyverse)
+
+# grab income data
+
+turnout_all <- readRDS("data/turnout_all.rds")
+
+income_data <- get_acs(
+  geography = "county",
+  variables = "B19013_001",
+  state = c("WI", "MI", "IL", "OH", "IN"),
+  year = 2024
+)
+
+# clean it 
+
+income_clean <- income_data |>
+  select(GEOID, estimate) |>
+  rename(geoid = GEOID, median_income = estimate)
+
+turnout_income <- turnout_all |>
+  left_join(income_clean, by = "geoid")
+```
+
+```{r create scatterplot, echo=FALSE, message=FALSE, warning=FALSE}
+
+p <- ggplot(turnout_income, aes(x = median_income, y = turnout_rate)) +
+  geom_point(alpha = 0.5, size = 2, color = "#1a3a5c") +
+  geom_smooth(method = "lm", se = FALSE, color = "#e67e22", linewidth = 0.8) +
+  scale_x_continuous(labels = scales::dollar) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Income vs. Turnout Across Five Midwest States",
+    subtitle = "Each dot represents one county, 2024",
+    x = NULL, y = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 11),
+    plot.title = element_text(size = 16, face = "bold", family = "Georgia"),
+    plot.subtitle = element_text(size = 11, family = "Georgia"),
+    plot.background = element_rect(fill = "#faf9f6", color = NA),
+    panel.background = element_rect(fill = "#faf9f6", color = NA)
+  )
+
+p
+
+
+```
