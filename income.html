@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income — The Missing Midwest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">The <span>Missing</span> Midwest</a>
+    <div class="nav-links">
+      <a class="nav-btn" href="index.html">Overview</a>
+      <a class="nav-btn active" href="income.html">Income</a>
+      <a class="nav-btn" href="education.html">Education</a>
+      <a class="nav-btn" href="findings.html">Findings</a>
+    </div>
+  </nav>
+
+  <!-- CHAPTER HERO -->
+  <div style="padding-top:56px">
+    <section class="chapter-hero">
+      <div class="chapter-bg-word">Income</div>
+      <div class="chapter-content">
+        <!-- EDIT: eyebrow, headline, deck -->
+        <div class="eyebrow">Chapter 01 · Wisconsin · Income</div>
+        <h1 class="chapter-headline">Does money<br>predict the vote?</h1>
+        <p class="chapter-deck">In Wisconsin's 72 counties, the gap between the richest and poorest is vast — and so is the gap in who shows up to vote. Scroll to follow the story.</p>
+        <div class="scroll-hint">Scroll to begin</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SCROLLYTELLING -->
+  <div class="scrolly" id="scrolly-income">
+
+    <!-- LEFT: sticky viz panel -->
+    <div class="sticky-side">
+      <div class="viz-stage">
+
+        <!-- ── FRAME 0: turnout map ── -->
+        <!-- EDIT: replace placeholder SVG with your Plotly choropleth -->
+        <!-- TO REPLACE: delete the viz-card div contents and add:
+             <div id="map-turnout" style="width:100%;height:100%"></div>
+             then call Plotly.newPlot('map-turnout', ...) in a <script> below -->
+        <div class="viz-frame active" data-frame="0">
+          <div class="viz-card">
+            <div class="viz-card-label">Voter Turnout by County <span>Wisconsin, 2020</span></div>
+            <div class="viz-body">
+              <div class="map-ph">
+                <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8"   y="8"   width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="65"  y="8"   width="54"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="122" y="8"   width="54"  height="40" fill="#8b4513" rx="2"/>
+                  <rect x="179" y="8"   width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="236" y="8"   width="76"  height="40" fill="#f0e6d3" rx="2"/>
+                  <rect x="8"   y="51"  width="54"  height="40" fill="#f0e6d3" rx="2"/>
+                  <rect x="65"  y="51"  width="54"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="122" y="51"  width="54"  height="40" fill="#8b4513" rx="2"/>
+                  <rect x="179" y="51"  width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="236" y="51"  width="76"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="8"   y="94"  width="54"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="65"  y="94"  width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="122" y="94"  width="54"  height="40" fill="#f0e6d3" rx="2"/>
+                  <rect x="179" y="94"  width="133" height="40" fill="#8b4513" rx="2"/>
+                  <rect x="8"   y="137" width="110" height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="122" y="137" width="190" height="40" fill="#d4a373" rx="2"/>
+                  <rect x="8"   y="180" width="190" height="72" fill="#f0e6d3" rx="2"/>
+                  <rect x="201" y="180" width="111" height="72" fill="#8b4513" rx="2"/>
+                  <text x="160" y="240" text-anchor="middle" fill="rgba(0,0,0,0.1)" font-size="9" font-family="monospace">placeholder</text>
+                </svg>
+              </div>
+              <div class="map-legend">
+                <span>Low</span><div class="leg-grad turnout"></div><span>High turnout</span>
+              </div>
+              <div class="placeholder-note" style="width:100%">↑ Replace with your Plotly choropleth</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FRAME 1: highlight low turnout ── -->
+        <!-- EDIT: replace with your highlighted Plotly map -->
+        <div class="viz-frame" data-frame="1">
+          <div class="viz-card">
+            <div class="viz-card-label">Counties Below 60% Turnout <span>highlighted</span></div>
+            <div class="viz-body">
+              <div class="map-ph">
+                <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.12">
+                    <rect x="8"   y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="65"  y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="179" y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="236" y="8"   width="76"  height="40" fill="#999" rx="2"/>
+                    <rect x="8"   y="51"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="51"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="179" y="51"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="236" y="51"  width="76"  height="40" fill="#999" rx="2"/>
+                    <rect x="8"   y="94"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="65"  y="94"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="94"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="137" width="190" height="40" fill="#999" rx="2"/>
+                    <rect x="201" y="180" width="111" height="72" fill="#999" rx="2"/>
+                  </g>
+                  <rect x="65"  y="51"  width="54"  height="40" fill="#c0392b" rx="2" opacity="0.85"/>
+                  <rect x="179" y="94"  width="133" height="40" fill="#c0392b" rx="2" opacity="0.85"/>
+                  <rect x="8"   y="137" width="110" height="40" fill="#c0392b" rx="2" opacity="0.85"/>
+                  <rect x="8"   y="180" width="190" height="72" fill="#c0392b" rx="2" opacity="0.8"/>
+                </svg>
+              </div>
+              <div class="callout">
+                <!-- EDIT: update this number with your real count -->
+                <div class="callout-n">~18 counties</div>
+                <div class="callout-t">fell below 60% turnout in a record-turnout year</div>
+              </div>
+              <div class="placeholder-note" style="width:100%">↑ Replace with your highlighted Plotly map</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FRAME 2: income quartile bar chart ── -->
+        <!-- EDIT: replace with your Plotly bar chart -->
+        <div class="viz-frame" data-frame="2">
+          <div class="viz-card">
+            <div class="viz-card-label">Avg. Turnout by Income Quartile <span>Wisconsin counties</span></div>
+            <div class="viz-body top">
+              <div class="q-bars">
+                <!-- EDIT: update data-v values with your real numbers -->
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar" style="height:52%" data-v="~52%"></div></div>
+                  <div class="q-lbl">Bottom 25%<small>income</small></div>
+                </div>
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar" style="height:64%" data-v="~62%"></div></div>
+                  <div class="q-lbl">25–50th<small>income</small></div>
+                </div>
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar" style="height:75%" data-v="~70%"></div></div>
+                  <div class="q-lbl">50–75th<small>income</small></div>
+                </div>
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar hi" style="height:89%" data-v="~77%"></div></div>
+                  <div class="q-lbl">Top 25%<small>income</small></div>
+                </div>
+              </div>
+              <div class="placeholder-note" style="width:100%;margin-top:1rem">↑ Replace with your Plotly bar chart</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FRAME 3: income vs turnout scatterplot ── -->
+        <!-- EDIT: replace with your Plotly scatterplot -->
+        <div class="viz-frame" data-frame="3">
+          <div class="viz-card">
+            <div class="viz-card-label">Income vs. Turnout <span>72 Wisconsin counties</span></div>
+            <div class="viz-body" style="padding:1rem 1.25rem 1.25rem;align-items:stretch">
+              <div class="sc-mini">
+                <div class="sc-mini-canvas" id="sc-income">
+                  <div class="sc-mini-trend"></div>
+                  <div class="sc-corner tr">High income<br>High turnout</div>
+                  <div class="sc-corner bl">Low income<br>Low turnout</div>
+                </div>
+                <div class="sc-axis">← Median household income</div>
+              </div>
+              <div class="placeholder-note" style="width:100%;margin-top:0.5rem">↑ Replace with your Plotly scatterplot</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- progress dots -->
+      <div class="prog-dots">
+        <div class="prog-dot active" data-s="0"></div>
+        <div class="prog-dot" data-s="1"></div>
+        <div class="prog-dot" data-s="2"></div>
+        <div class="prog-dot" data-s="3"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: text steps -->
+    <div class="steps-side">
+
+      <div class="step active" data-step="0">
+        <div class="step-card">
+          <div class="step-num">01 of 04</div>
+          <!-- EDIT: step headline + body text -->
+          <h3>Wisconsin's turnout landscape</h3>
+          <p>Wisconsin's 72 counties span a huge range — from Dane County (Madison) with a highly educated urban population, to sparse rural counties in the north.</p>
+          <p>Statewide, 2020 turnout was among the <strong>highest in the nation</strong>. But that number hides enormous local variation.</p>
+        </div>
+      </div>
+
+      <div class="step" data-step="1">
+        <div class="step-card">
+          <div class="step-num">02 of 04</div>
+          <!-- EDIT: step headline + body text -->
+          <h3>Not everywhere kept up</h3>
+          <p>Even in a record year, roughly 18 counties fell below 60% turnout. They're not scattered randomly — they <strong>cluster geographically</strong> in the north and west.</p>
+          <p>What do these communities share?</p>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="step-card">
+          <div class="step-num">03 of 04</div>
+          <!-- EDIT: step headline + body text -->
+          <h3>Wealthier counties vote more</h3>
+          <p>Sorting Wisconsin counties into income quartiles reveals a near-linear pattern: the wealthier the county, the higher its average voter turnout.</p>
+          <p>The gap between the top and bottom quartile is roughly <strong>25 percentage points</strong> — a chasm, not a blip.</p>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="step-card">
+          <div class="step-num">04 of 04</div>
+          <!-- EDIT: step headline + body text -->
+          <h3>The county-level picture</h3>
+          <p>Each dot is a county. The trend confirms what the bars suggested: as median household income rises, voter turnout rises with it.</p>
+          <p>Income alone doesn't explain everything — but it's a powerful predictor. <strong>Up next: education.</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="max-width:1060px;margin:0 auto">
+    <div class="site-footer">
+      <div class="footer-name">The Missing Midwest</div>
+      <div class="footer-meta">Data Visualization · Spring 2025<br>Data: CCES, U.S. Census Bureau, MIT Election Lab</div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

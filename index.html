@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT: page title -->
+  <title>The Missing Midwest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- EDIT: swap font names here to change fonts sitewide -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <!-- EDIT: site name -->
+    <a class="nav-logo" href="index.html">The <span>Missing</span> Midwest</a>
+    <div class="nav-links">
+      <a class="nav-btn active" href="index.html">Overview</a>
+      <a class="nav-btn" href="income.html">Income</a>
+      <a class="nav-btn" href="education.html">Education</a>
+      <a class="nav-btn" href="findings.html">Findings</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding-top:56px">
+    <div style="max-width:820px; margin:0 auto; padding:7rem 2.5rem 5rem; border-bottom:1px solid var(--border)">
+      <!-- EDIT: kicker label -->
+      <div class="eyebrow" style="display:flex;align-items:center;gap:0.75rem">
+        A data investigation · Wisconsin, 2020
+        <span style="flex:1;height:1px;background:var(--border);display:block"></span>
+      </div>
+      <!-- EDIT: main headline -->
+      <h1 style="font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin-bottom:1.75rem">
+        Millions of<br><em style="font-style:italic;color:var(--accent)">Midwesterners</em><br>didn't vote.
+      </h1>
+      <!-- EDIT: deck paragraph -->
+      <p style="font-size:1.15rem;color:var(--text-muted);max-width:600px;line-height:1.8;font-weight:300;font-style:italic;margin-bottom:2.5rem">
+        They weren't randomly distributed. Across Illinois, Michigan, Indiana, Wisconsin, and Ohio, the counties where the fewest people show up share something in common — and it isn't geography.
+      </p>
+      <!-- EDIT: data source credit -->
+      <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-dim)">Data: CCES · U.S. Census Bureau · MIT Election Lab</div>
+    </div>
+  </section>
+
+  <!-- TWO OVERVIEW CHARTS -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;max-width:1060px;margin:0 auto;border-left:1px solid var(--border)">
+
+    <!-- Chart 1: bar chart -->
+    <div style="padding:3.5rem 3rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+      <!-- EDIT: chart title -->
+      <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:0.4rem">Average county turnout by state, 2020</div>
+      <!-- EDIT: chart description -->
+      <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.75rem;font-style:italic">Even the highest-turnout state hides enormous within-state variation.</p>
+
+      <!-- EDIT: replace this entire block with your Plotly bar chart -->
+      <!-- TO REPLACE: add <div id="chart-states"></div> and call Plotly.newPlot('chart-states', ...) -->
+      <div class="bar-chart">
+        <div class="bar-row"><span class="bar-lbl">Wisconsin</span><div class="bar-track"><div class="bar-fill" style="width:73%"></div></div><span class="bar-val">73%</span></div>
+        <div class="bar-row"><span class="bar-lbl">Michigan</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-val">67%</span></div>
+        <div class="bar-row"><span class="bar-lbl">Illinois</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val">62%</span></div>
+        <div class="bar-row"><span class="bar-lbl">Ohio</span><div class="bar-track"><div class="bar-fill" style="width:61%"></div></div><span class="bar-val">61%</span></div>
+        <div class="bar-row"><span class="bar-lbl">Indiana</span><div class="bar-track"><div class="bar-fill" style="width:56%"></div></div><span class="bar-val">56%</span></div>
+      </div>
+      <div class="placeholder-note">↑ Replace with your Plotly chart (all 5 states)</div>
+    </div>
+
+    <!-- Chart 2: scatter -->
+    <div style="padding:3.5rem 3rem;border-right:none;border-bottom:1px solid var(--border)">
+      <!-- EDIT: chart title -->
+      <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:0.4rem">Income vs. turnout — all 5 states</div>
+      <!-- EDIT: chart description -->
+      <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.75rem;font-style:italic">Each dot is a county. The pattern holds everywhere: wealthier counties vote more.</p>
+
+      <!-- EDIT: replace with your Plotly scatterplot -->
+      <!-- TO REPLACE: add <div id="chart-scatter"></div> and call Plotly.newPlot('chart-scatter', ...) -->
+      <div class="scatter-canvas" id="sc-home">
+        <div class="s-label tr">High income<br>High turnout</div>
+        <div class="s-label bl">Low income<br>Low turnout</div>
+        <div class="s-trend"></div>
+      </div>
+      <div class="s-axis">← Median household income</div>
+      <div class="placeholder-note">↑ Replace with your Plotly scatterplot</div>
+    </div>
+  </div>
+
+  <!-- STATE NAV CARDS -->
+  <div style="max-width:1060px;margin:0 auto;padding:3rem 2.5rem 1rem">
+    <div class="section-rule">Explore by theme — Wisconsin deep dive</div>
+  </div>
+  <div style="max-width:1060px;margin:0 auto">
+    <div class="state-nav">
+      <div class="state-card" onclick="location.href='income.html'">
+        <div class="sc-tag">Chapter 01 →</div>
+        <!-- EDIT: card title, description -->
+        <div class="sc-name">Income</div>
+        <div class="sc-desc">Does where you fall on the income scale predict whether you show up on election day?</div>
+        <div class="sc-cta">Explore →</div>
+      </div>
+      <div class="state-card" onclick="location.href='education.html'">
+        <div class="sc-tag">Chapter 02 →</div>
+        <div class="sc-name">Education</div>
+        <div class="sc-desc">The relationship between college attainment and voter participation, county by county.</div>
+        <div class="sc-cta">Explore →</div>
+      </div>
+      <div class="state-card" onclick="location.href='findings.html'">
+        <div class="sc-tag">Chapter 03 →</div>
+        <div class="sc-name">Findings</div>
+        <div class="sc-desc">What do income and education together tell us — and what does it mean for representation?</div>
+        <div class="sc-cta">Read →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="max-width:1060px;margin:0 auto">
+    <div class="site-footer">
+      <div class="footer-name">The Missing Midwest</div>
+      <!-- EDIT: footer credit line -->
+      <div class="footer-meta">Data Visualization · Spring 2025<br>Data: CCES, U.S. Census Bureau, MIT Election Lab</div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

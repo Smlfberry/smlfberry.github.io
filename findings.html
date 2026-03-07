@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Findings — The Missing Midwest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">The <span>Missing</span> Midwest</a>
+    <div class="nav-links">
+      <a class="nav-btn" href="index.html">Overview</a>
+      <a class="nav-btn" href="income.html">Income</a>
+      <a class="nav-btn" href="education.html">Education</a>
+      <a class="nav-btn active" href="findings.html">Findings</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div style="padding-top:56px">
+    <section class="chapter-hero">
+      <div class="chapter-bg-word">So?</div>
+      <div class="chapter-content">
+        <!-- EDIT: headline + deck -->
+        <div class="eyebrow">Chapter 03 · Findings</div>
+        <h1 class="chapter-headline">The electorate<br>isn't the population.</h1>
+        <p class="chapter-deck">Income and education together predict who votes in Wisconsin — and who doesn't. The communities left out aren't left out randomly. Here's what that means.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- FINDINGS BODY -->
+  <div style="max-width:1060px;margin:0 auto;padding:4rem 2.5rem 6rem">
+
+    <!-- KEY STATS -->
+    <div class="section-rule">Key findings — Wisconsin, 2020</div>
+    <div class="findings-grid">
+      <!-- EDIT: update all four numbers and descriptions with your real data -->
+      <div class="finding-card">
+        <div class="finding-num">~25 pts</div>
+        <div class="finding-text">Gap in average turnout between the top and bottom income quartile of Wisconsin counties</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">~29 pts</div>
+        <div class="finding-text">Gap in average turnout between the highest and lowest education quartile of Wisconsin counties</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">~18</div>
+        <div class="finding-text">Counties falling below 60% turnout in 2020, concentrated in lower-income, lower-education areas</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">20,682</div>
+        <div class="finding-text">Vote margin by which Wisconsin was decided in 2016 — smaller than the turnout gap between many individual counties</div>
+      </div>
+    </div>
+
+    <!-- COMBINED CHART -->
+    <div class="section-rule">The combined picture</div>
+    <!-- EDIT: chart title + description -->
+    <div style="font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:0.4rem">Income, education, and turnout — together</div>
+    <p style="font-size:0.88rem;color:var(--text-muted);font-style:italic;margin-bottom:1.5rem">Each dot is a Wisconsin county. Dot size encodes education level (% college degree). Position encodes income (x-axis) and turnout (y-axis).</p>
+
+    <!-- EDIT: replace this block with your Plotly scatterplot -->
+    <!-- TO REPLACE: delete the combined-chart-wrap div and add:
+         <div id="chart-combined" style="width:100%;height:400px"></div>
+         then call Plotly.newPlot('chart-combined', ...) in the script below -->
+    <div class="combined-chart-wrap">
+      <div class="combined-scatter" id="sc-combined">
+        <div class="cs-trend"></div>
+        <div class="cs-label tr">High income · high education<br>High turnout</div>
+        <div class="cs-label bl">Low income · low education<br>Low turnout</div>
+      </div>
+      <div class="s-axis" style="margin-top:0.5rem">← Median household income</div>
+      <div class="placeholder-note">↑ Replace with your Plotly scatterplot (size = % college degree, hover = county name)</div>
+    </div>
+
+    <!-- TAKEAWAY TEXT -->
+    <!-- EDIT: these are your written findings — update with your real analysis -->
+    <div class="takeaway">
+      <h3>What the data shows</h3>
+      <p>Across Wisconsin's 72 counties, both income and education are strong, independent predictors of voter turnout. Counties where residents earn less and hold fewer college degrees consistently vote at lower rates — even in years with record-high statewide participation.</p>
+      <p>These communities aren't underrepresented because of voter suppression or apathy alone. Structural factors — access to time off work, civic infrastructure, educational resources — shape who participates in elections.</p>
+    </div>
+
+    <div class="takeaway">
+      <!-- EDIT: the "so what" / policy implications paragraph -->
+      <h3>Why it matters for resource allocation</h3>
+      <p>In a state decided by fewer than 21,000 votes in 2016, systematic underparticipation by lower-income and less-educated communities means the electorate that actually determines outcomes looks meaningfully different from the full population.</p>
+      <p>If resource allocation — schools, job training, civic programs — tracks with existing political power, the communities that need investment most may be least able to demand it. Turnout inequality isn't just a civic problem. It's a feedback loop.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div style="max-width:1060px;margin:0 auto">
+    <div class="site-footer">
+      <div class="footer-name">The Missing Midwest</div>
+      <div class="footer-meta">Data Visualization · Spring 2025<br>Data: CCES, U.S. Census Bureau, MIT Election Lab</div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

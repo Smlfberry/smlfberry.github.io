@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education — The Missing Midwest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">The <span>Missing</span> Midwest</a>
+    <div class="nav-links">
+      <a class="nav-btn" href="index.html">Overview</a>
+      <a class="nav-btn" href="income.html">Income</a>
+      <a class="nav-btn active" href="education.html">Education</a>
+      <a class="nav-btn" href="findings.html">Findings</a>
+    </div>
+  </nav>
+
+  <!-- CHAPTER HERO -->
+  <div style="padding-top:56px">
+    <section class="chapter-hero">
+      <div class="chapter-bg-word">Edu.</div>
+      <div class="chapter-content">
+        <!-- EDIT: eyebrow, headline, deck -->
+        <div class="eyebrow">Chapter 02 · Wisconsin · Education</div>
+        <h1 class="chapter-headline">Does a degree<br>drive the vote?</h1>
+        <p class="chapter-deck">College attainment varies enormously across Wisconsin's counties. So does turnout. Are they connected?</p>
+        <div class="scroll-hint">Scroll to begin</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SCROLLYTELLING -->
+  <div class="scrolly" id="scrolly-edu">
+
+    <!-- LEFT: sticky viz panel -->
+    <div class="sticky-side">
+      <div class="viz-stage">
+
+        <!-- ── FRAME 0: turnout map ── -->
+        <!-- EDIT: replace with your Plotly choropleth -->
+        <div class="viz-frame active" data-frame="0">
+          <div class="viz-card">
+            <div class="viz-card-label">Voter Turnout by County <span>Wisconsin, 2020</span></div>
+            <div class="viz-body">
+              <div class="map-ph">
+                <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="8"   y="8"   width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="65"  y="8"   width="54"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="122" y="8"   width="54"  height="40" fill="#8b4513" rx="2"/>
+                  <rect x="179" y="8"   width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="236" y="8"   width="76"  height="40" fill="#f0e6d3" rx="2"/>
+                  <rect x="8"   y="51"  width="54"  height="40" fill="#f0e6d3" rx="2"/>
+                  <rect x="65"  y="51"  width="54"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="122" y="51"  width="54"  height="40" fill="#8b4513" rx="2"/>
+                  <rect x="179" y="51"  width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="236" y="51"  width="76"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="8"   y="94"  width="54"  height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="65"  y="94"  width="54"  height="40" fill="#d4a373" rx="2"/>
+                  <rect x="122" y="94"  width="54"  height="40" fill="#f0e6d3" rx="2"/>
+                  <rect x="179" y="94"  width="133" height="40" fill="#8b4513" rx="2"/>
+                  <rect x="8"   y="137" width="110" height="40" fill="#c07a4a" rx="2"/>
+                  <rect x="122" y="137" width="190" height="40" fill="#d4a373" rx="2"/>
+                  <rect x="8"   y="180" width="190" height="72" fill="#f0e6d3" rx="2"/>
+                  <rect x="201" y="180" width="111" height="72" fill="#8b4513" rx="2"/>
+                  <text x="160" y="240" text-anchor="middle" fill="rgba(0,0,0,0.1)" font-size="9" font-family="monospace">placeholder</text>
+                </svg>
+              </div>
+              <div class="map-legend">
+                <span>Low</span><div class="leg-grad turnout"></div><span>High turnout</span>
+              </div>
+              <div class="placeholder-note" style="width:100%">↑ Replace with your Plotly choropleth</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FRAME 1: highlight low turnout ── -->
+        <!-- EDIT: replace with your highlighted Plotly map -->
+        <div class="viz-frame" data-frame="1">
+          <div class="viz-card">
+            <div class="viz-card-label">Same Counties, New Question <span>below 60% highlighted</span></div>
+            <div class="viz-body">
+              <div class="map-ph">
+                <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.12">
+                    <rect x="8"   y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="65"  y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="179" y="8"   width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="236" y="8"   width="76"  height="40" fill="#999" rx="2"/>
+                    <rect x="8"   y="51"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="51"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="179" y="51"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="236" y="51"  width="76"  height="40" fill="#999" rx="2"/>
+                    <rect x="8"   y="94"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="65"  y="94"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="94"  width="54"  height="40" fill="#999" rx="2"/>
+                    <rect x="122" y="137" width="190" height="40" fill="#999" rx="2"/>
+                    <rect x="201" y="180" width="111" height="72" fill="#999" rx="2"/>
+                  </g>
+                  <rect x="65"  y="51"  width="54"  height="40" fill="#c0392b" rx="2" opacity="0.85"/>
+                  <rect x="179" y="94"  width="133" height="40" fill="#c0392b" rx="2" opacity="0.85"/>
+                  <rect x="8"   y="137" width="110" height="40" fill="#c0392b" rx="2" opacity="0.85"/>
+                  <rect x="8"   y="180" width="190" height="72" fill="#c0392b" rx="2" opacity="0.8"/>
+                </svg>
+              </div>
+              <div class="callout">
+                <div class="callout-n">Same counties</div>
+                <div class="callout-t">low-income and low-education areas overlap heavily</div>
+              </div>
+              <div class="placeholder-note" style="width:100%">↑ Replace with your highlighted Plotly map</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FRAME 2: education quartile bar chart ── -->
+        <!-- EDIT: replace with your Plotly bar chart -->
+        <div class="viz-frame" data-frame="2">
+          <div class="viz-card">
+            <div class="viz-card-label">Avg. Turnout by Education Quartile <span>Wisconsin counties</span></div>
+            <div class="viz-body top">
+              <div class="q-bars">
+                <!-- EDIT: update data-v with your real numbers -->
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar" style="height:48%" data-v="~50%"></div></div>
+                  <div class="q-lbl">Lowest<small>% college</small></div>
+                </div>
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar" style="height:61%" data-v="~60%"></div></div>
+                  <div class="q-lbl">2nd<small>% college</small></div>
+                </div>
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar" style="height:73%" data-v="~68%"></div></div>
+                  <div class="q-lbl">3rd<small>% college</small></div>
+                </div>
+                <div class="q-col">
+                  <div class="q-track" style="height:140px"><div class="q-bar hi" style="height:90%" data-v="~79%"></div></div>
+                  <div class="q-lbl">Highest<small>% college</small></div>
+                </div>
+              </div>
+              <div class="placeholder-note" style="width:100%;margin-top:1rem">↑ Replace with your Plotly bar chart</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FRAME 3: education vs turnout scatterplot ── -->
+        <!-- EDIT: replace with your Plotly scatterplot -->
+        <div class="viz-frame" data-frame="3">
+          <div class="viz-card">
+            <div class="viz-card-label">Education vs. Turnout <span>72 Wisconsin counties</span></div>
+            <div class="viz-body" style="padding:1rem 1.25rem 1.25rem;align-items:stretch">
+              <div class="sc-mini">
+                <div class="sc-mini-canvas" id="sc-edu">
+                  <div class="sc-mini-trend"></div>
+                  <div class="sc-corner tr">More college grads<br>Higher turnout</div>
+                  <div class="sc-corner bl">Fewer college grads<br>Lower turnout</div>
+                </div>
+                <div class="sc-axis">← % adults with college degree</div>
+              </div>
+              <div class="placeholder-note" style="width:100%;margin-top:0.5rem">↑ Replace with your Plotly scatterplot</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- progress dots -->
+      <div class="prog-dots">
+        <div class="prog-dot active" data-s="0"></div>
+        <div class="prog-dot" data-s="1"></div>
+        <div class="prog-dot" data-s="2"></div>
+        <div class="prog-dot" data-s="3"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: text steps -->
+    <div class="steps-side">
+
+      <div class="step active" data-step="0">
+        <div class="step-card">
+          <div class="step-num">01 of 04</div>
+          <!-- EDIT: step text -->
+          <h3>The same map, a new question</h3>
+          <p>We've seen where Wisconsin's turnout dips. Now let's ask a different question: is it about <strong>who went to college</strong>, not just who earns more?</p>
+          <p>Income and education often travel together — but they're not the same thing.</p>
+        </div>
+      </div>
+
+      <div class="step" data-step="1">
+        <div class="step-card">
+          <div class="step-num">02 of 04</div>
+          <!-- EDIT: step text -->
+          <h3>The same counties, again</h3>
+          <p>The low-turnout counties from the income chapter look familiar here too. These communities are being flagged by multiple indicators at once.</p>
+          <p>That's a sign of something deeper than one variable.</p>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="step-card">
+          <div class="step-num">03 of 04</div>
+          <!-- EDIT: step text -->
+          <h3>More degrees, more votes</h3>
+          <p>Sorting by the share of adults with a college degree shows nearly the same staircase pattern as income. Counties in the top education quartile vote at rates roughly <strong>29 points higher</strong> than counties in the bottom.</p>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="step-card">
+          <div class="step-num">04 of 04</div>
+          <!-- EDIT: step text -->
+          <h3>Education predicts turnout too</h3>
+          <p>The scatterplot confirms it — and the slope is steep. Even controlling for income, education adds independent explanatory power.</p>
+          <p>Two variables, same story. <strong>So what does it mean?</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="max-width:1060px;margin:0 auto">
+    <div class="site-footer">
+      <div class="footer-name">The Missing Midwest</div>
+      <div class="footer-meta">Data Visualization · Spring 2025<br>Data: CCES, U.S. Census Bureau, MIT Election Lab</div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
