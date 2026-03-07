@@ -1,0 +1,74 @@
+---
+title: ""
+output: 
+  html_document:
+    self_contained: true
+date: ""
+---
+
+```{r setup + data, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+
+turnout_all <- readRDS("~/Desktop/final-project-Smlfberry/data/turnout_all.rds")
+
+state_avg <- turnout_all |>
+  group_by(state) |>
+  summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE)) |>
+   arrange(desc(avg_turnout))
+
+```
+
+```{r bar plot, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(plotly)
+library(dplyr)
+
+state_avg <- turnout_all %>%
+  group_by(state) %>%
+  summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE)) %>%
+  arrange(desc(avg_turnout)) %>%
+  mutate(state_full = case_when(
+    state == "WI" ~ "Wisconsin",
+    state == "MI" ~ "Michigan",
+    state == "IL" ~ "Illinois",
+    state == "OH" ~ "Ohio",
+    state == "IN" ~ "Indiana"
+  ))
+
+p <- ggplot(state_avg, aes(x = avg_turnout, y = reorder(state_full, avg_turnout), 
+                            fill = avg_turnout,
+                            text = paste0(state_full, "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+  geom_col() +
+  scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
+  scale_x_continuous(labels = scales::percent) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 16, face = "bold", hjust = 0),
+    axis.text.y = element_text(size = 13),
+    axis.text.x = element_text(size = 11)
+  )
+
+ggplotly(p, tooltip = "text") %>%
+  layout(
+    title = list(
+      text = "Average Turnout by State<br><sup>Votes Cast by Citizen, Voting Age Population for the 2024 General Presidential Election</sup>",
+      font = list(size = 20, family = "Georgia, serif", color = "#1a1916"),
+      x = 0,
+      xanchor = "left",
+      pad = list(b = 10)
+    ),
+    yaxis = list(
+      tickfont = list(family = "Georgia, serif", size = 13, color = "#1a1916")
+    ),
+    xaxis = list(
+      tickfont = list(family = "Georgia, serif", size = 11, color = "#6b6860")
+    ),
+    margin = list(t = 80)
+  )
+
+```
