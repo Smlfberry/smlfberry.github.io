@@ -14,7 +14,7 @@ library(sf)
 il_counties <- readRDS("data/il_counties.rds")
 ```
 
-```{r static plot,echo=FALSE, message=FALSE, warning=FALSE}
+```{r static plot,echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=8}
 
 step_cols <- viridisLite::viridis(5, option = "viridis", direction = -1)
 
