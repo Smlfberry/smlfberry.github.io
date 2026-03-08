@@ -31,9 +31,10 @@ p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
 ggplotly(p, tooltip = "text") %>%
-  plotly::layout(
-    autosize = TRUE,
-    margin = list(t = 20, r = 20, b = 40, l = 40)
-  ) %>%
+ plotly::layout(
+  width = 580,
+  height = 380,
+  margin = list(t = 20, r = 20, b = 60, l = 60)
+) %>%
   plotly::config(responsive = TRUE)
 ```

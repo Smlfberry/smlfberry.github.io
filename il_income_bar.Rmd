@@ -1,6 +1,8 @@
 ---
 title: ""
-output: html_document
+output: 
+  html_document:
+    self_contained: true
 date: ""
 ---
 
@@ -66,8 +68,9 @@ p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
   )
 ggplotly(p, tooltip = "text") %>%
   plotly::layout(
-    autosize = TRUE,
-    margin = list(t = 20, r = 20, b = 40, l = 40)
+    width = 580,
+    height = 380,
+    margin = list(t = 20, r = 20, b = 60, l = 60)
   ) %>%
   plotly::config(responsive = TRUE)
 ```

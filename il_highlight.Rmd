@@ -37,7 +37,7 @@ pal_highlight <- colorFactor(
 )
 
 leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) |>
-  setView(lng = -89.3985, lat = 40.6331, zoom = 6) |>
+fitBounds(-91.5, 36.9, -87.0, 42.5) |>
 
   addPolygons(
     fillColor = ~pal_highlight(highlight),
