@@ -47,7 +47,7 @@ il_income <- turnout_income %>%
 
 ```
 
-```{r bar chart, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4.5, out.width="100%"}
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=3.5, out.width="100%"}
 il_income_avg <- il_income %>%
   group_by(income_group) %>%
   summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE))
