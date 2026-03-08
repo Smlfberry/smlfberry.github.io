@@ -42,56 +42,19 @@
     <div class="sticky-side">
       <div class="viz-stage">
 
-        <!-- ── FRAME 0: turnout map ── -->
-        <div class="viz-frame active" data-frame="0">
+        <!-- ── FRAME 0: combined map ── -->
+<div class="viz-frame active" data-frame="0">
   <iframe src="il_income_educ_map.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
 </div>
-
-        <!-- ── FRAME 1: highlight low turnout ── -->
-        <!-- EDIT: replace with your highlighted Plotly map -->
-        <div class="viz-frame" data-frame="1">
-          <div class="viz-card">
-            <div class="viz-card-label">Same Counties, New Question <span>below 60% highlighted</span></div>
-            <div class="viz-body">
-              <div class="map-ph">
-                <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
-                  <g opacity="0.12">
-                    <rect x="8"   y="8"   width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="65"  y="8"   width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="122" y="8"   width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="179" y="8"   width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="236" y="8"   width="76"  height="40" fill="#999" rx="2"/>
-                    <rect x="8"   y="51"  width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="122" y="51"  width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="179" y="51"  width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="236" y="51"  width="76"  height="40" fill="#999" rx="2"/>
-                    <rect x="8"   y="94"  width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="65"  y="94"  width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="122" y="94"  width="54"  height="40" fill="#999" rx="2"/>
-                    <rect x="122" y="137" width="190" height="40" fill="#999" rx="2"/>
-                    <rect x="201" y="180" width="111" height="72" fill="#999" rx="2"/>
-                  </g>
-                  <rect x="65"  y="51"  width="54"  height="40" fill="#c0392b" rx="2" opacity="0.85"/>
-                  <rect x="179" y="94"  width="133" height="40" fill="#c0392b" rx="2" opacity="0.85"/>
-                  <rect x="8"   y="137" width="110" height="40" fill="#c0392b" rx="2" opacity="0.85"/>
-                  <rect x="8"   y="180" width="190" height="72" fill="#c0392b" rx="2" opacity="0.8"/>
-                </svg>
-              </div>
-              <div class="callout">
-                <div class="callout-n">Same counties</div>
-                <div class="callout-t">low-income and low-education areas overlap heavily</div>
-              </div>
-              <div class="placeholder-note" style="width:100%">↑ Replace with your highlighted Plotly map</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── FRAME 2: education quartile bar chart ── -->
-<div class="viz-frame" data-frame="2">
+<!-- ── FRAME 1: education quartile bar chart ── -->
+<div class="viz-frame" data-frame="1">
   <iframe src="educ_bar.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
 </div>
-
-       <!-- ── FRAME 3 ── -->
+<!-- ── FRAME 2: education scatter ── -->
+<div class="viz-frame" data-frame="2">
+  <iframe src="il_educ_turnout.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+</div>
+<!-- ── FRAME 3: income/education comparison bar ── -->
 <div class="viz-frame" data-frame="3">
   <iframe src="income_educ_bar.html" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
 </div>
@@ -105,48 +68,40 @@
       </div>
     </div>
 
-    <!-- RIGHT: text steps -->
+   <!-- RIGHT: text steps -->
     <div class="steps-side">
-
       <div class="step active" data-step="0">
         <div class="step-card">
           <div class="step-num">01 of 04</div>
-          <!-- EDIT: step text -->
-          <h3>The same map, a new question</h3>
-          <p>We've seen where Wisconsin's turnout dips. Now let's ask a different question: is it about <strong>who went to college</strong>, not just who earns more?</p>
-          <p>Income and education often travel together — but they're not the same thing.</p>
+          <h3>Where do low income and low education overlap?</h3>
+          <p>Illinois counties with low income and low education are not randomly distributed and have significant overlap.</p>
+          <p>14 counties have <strong>both</strong> low income and low college attainment — are these the lowest turnout counties too?</p>
         </div>
       </div>
-
       <div class="step" data-step="1">
         <div class="step-card">
           <div class="step-num">02 of 04</div>
-          <!-- EDIT: step text -->
-          <h3>The same counties, again</h3>
-          <p>The low-turnout counties from the income chapter look familiar here too. These communities are being flagged by multiple indicators at once.</p>
-          <p>That's a sign of something deeper than one variable.</p>
+          <h3>More degrees, more votes</h3>
+          <p>Sorting counties by share of college-educated residents shows a clear staircase — the more educated the county, the higher its turnout.</p>
+          <p>Counties where fewer than 18% hold a degree vote at markedly lower rates.</p>
         </div>
       </div>
-
       <div class="step" data-step="2">
         <div class="step-card">
           <div class="step-num">03 of 04</div>
-          <!-- EDIT: step text -->
-          <h3>More degrees, more votes</h3>
-          <p>Sorting by the share of adults with a college degree shows nearly the same staircase pattern as income. Counties in the top education quartile vote at rates roughly <strong>29 points higher</strong> than counties in the bottom.</p>
+          <h3>A real but weaker signal</h3>
+          <p>The county-level scatter shows education and turnout are positively correlated. But, the relationship is less direct than income.</p>
+          <p>While education matters, it would appear that income is the more consistent predictor across Illinois counties.</p>
         </div>
       </div>
-
       <div class="step" data-step="3">
         <div class="step-card">
           <div class="step-num">04 of 04</div>
-          <!-- EDIT: step text -->
-          <h3>Education predicts turnout too</h3>
-          <p>The scatterplot confirms it — and the slope is steep. Even controlling for income, education adds independent explanatory power.</p>
-          <p>Two variables, same story. <strong>So what does it mean?</strong></p>
+          <h3>The compounding effect isn't what we expected</h3>
+          <p>Counties with <strong>both</strong> low income and low education don't have the lowest turnout — counties with low education alone do.</p>
+          <p>This suggests education may be an independent driver of turnout, not just a proxy for income.</p>
         </div>
       </div>
-
     </div>
   </div>
 
