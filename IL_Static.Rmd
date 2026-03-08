@@ -11,21 +11,21 @@ library(plotly)
 library(leaflet)
 library(sf)
 
-wi_counties <- readRDS("data/wi_counties.rds")
+il_counties <- readRDS("data/il_counties.rds")
 ```
 
 ```{r static plot,echo=FALSE, message=FALSE, warning=FALSE}
 
 step_cols <- viridisLite::viridis(5, option = "viridis", direction = -1)
 
-wi_counties |> 
+il_counties |> 
   ggplot() +
   geom_sf(aes(fill = turnout_rate), color = "white", linewidth = 0.2) +
 scale_fill_stepsn(
   colors = step_cols,
-  limits = c(0.54, 0.88),
-  breaks = c(0.54, 0.61, 0.68, 0.75, 0.82, 0.88),
-  labels = c("54%", "61%", "68%", "75%", "82%", "88%"),
+  limits = c(0.48, 0.78),
+  breaks = c(0.48, 0.54, 0.60, 0.66, 0.72, 0.78),
+  labels = c("48%", "54%", "60%", "66%", "72%", "78%"),
   name = NULL,
   guide = guide_colorsteps(
     direction = "horizontal",
@@ -37,20 +37,20 @@ scale_fill_stepsn(
 ) +
   coord_sf(datum = NA) +
   labs(
-    title = "Voter Turnout Rate by County in Wisconsin",
+    title = "Voter Turnout Rate by County in Illinois",
     subtitle = "2024 General Presidential Election"
   ) +
-theme_void() +
+  theme_void() +
   theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5, family = "Georgia"),
-    plot.subtitle = element_text(hjust = 0.5, family = "Georgia"),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5),
     legend.position = "bottom",
     plot.margin = margin(10, 10, 10, 10),
     legend.direction = "horizontal",
-    legend.key.width = unit(1.4, "cm"),
+    legend.key.width  = unit(1.4, "cm"),
     legend.key.height = unit(0.35, "cm"),
-    legend.spacing.x = unit(0, "pt")
-  )
+    legend.spacing.x  = unit(0, "pt")
+  ) 
 
 
 ```
