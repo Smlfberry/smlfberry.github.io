@@ -19,11 +19,9 @@ il_map <- st_transform(il_counties, crs = 4326)
 
 ```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
 
-# create a highlight variable
 il_map <- il_map %>%
   mutate(highlight = ifelse(turnout_rate < 0.60, "Below 60%", "Above 60%"))
 
-# two color palette
 pal_highlight <- colorFactor(
   palette = c("Above 60%" = "#d0cfc9", "Below 60%" = "#e67e22"),
   domain = il_map$highlight
@@ -48,9 +46,13 @@ leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
   ) %>%
   htmlwidgets::onRender("
     function(el, x) {
-      var title = document.createElement('div');
-      title.innerHTML = '<div style=\"position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:16px;font-weight:bold;color:#1a1916;z-index:999;white-space:nowrap;\">Counties Below 60% Turnout</div>';
-      el.appendChild(title.firstChild);
+      el.style.background = '#faf9f6';
+      el.querySelector('.leaflet-container').style.background = '#faf9f6';
+      setTimeout(function() {
+        var title = document.createElement('div');
+        title.innerHTML = '<div style=\"position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:16px;font-weight:bold;color:#1a1916;z-index:999;white-space:nowrap;\">Counties Below 60% Turnout</div>';
+        el.appendChild(title.firstChild);
+      }, 500);
     }
   ")
 
