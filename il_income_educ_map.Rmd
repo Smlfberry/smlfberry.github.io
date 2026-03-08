@@ -1,0 +1,76 @@
+---
+title: ""
+output: 
+  html_document:
+    self_contained: true
+date: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(sf)
+library(leaflet)
+turnout_income <- readRDS("~/Desktop/final-project-Smlfberry/data/turnout_income.rds")
+il_counties <- readRDS("data/il_counties.rds")
+il_counties_pct <- readRDS("data/il_counties_pct.rds")
+
+il_counties_pct_sf <- il_counties %>%
+  left_join(st_drop_geometry(il_counties_pct), by = "GEOID") %>%
+  mutate(pct_college = pct_bachelors + pct_grad)
+```
+
+```{r join data, echo=FALSE, message=FALSE, warning=FALSE}
+il_combined <- il_counties_pct_sf %>%
+  left_join(st_drop_geometry(turnout_income %>% filter(state == "IL")), 
+            by = c("GEOID" = "geoid")) %>%
+  mutate(
+    pct_college = pct_bachelors + pct_grad,
+    low_income = median_income < quantile(median_income, 0.25, na.rm = TRUE),
+    low_edu = pct_college < 18,
+    category = case_when(
+      low_income & low_edu ~ "Both",
+      low_income & !low_edu ~ "Low income only",
+      !low_income & low_edu ~ "Low education only",
+      TRUE ~ "Neither"
+    )
+  )
+```
+
+```{r map of educ and income, echo=FALSE, message=FALSE, warning=FALSE}
+
+pal_combined <- colorFactor(
+  palette = c(
+    "Both" = "#e67e22",
+    "Low income only" = "#2c7a5e",
+    "Low education only" = "#1a3a5c",
+    "Neither" = "#d0cfc9"
+  ),
+  domain = il_combined$category
+)
+
+il_combined <- st_transform(il_combined, crs = 4326)
+
+leaflet(il_combined, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
+  addPolygons(
+    fillColor = ~pal_combined(category),
+    fillOpacity = 0.8,
+    color = "white",
+    weight = 0.5,
+    label = ~ifelse(category != "Neither",
+                    paste0(county, ": ", category),
+                    NA)
+  ) %>%
+  addLegend(
+    pal = pal_combined,
+   values = ~category[category != "Neither"],
+    title = "County Profile",
+    position = "bottomright"
+  ) %>%
+  htmlwidgets::onRender("
+    function(el, x) {
+      var title = document.createElement('div');
+      title.innerHTML = '<div style=\"position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:16px;font-weight:bold;color:#1a1916;z-index:999;white-space:nowrap;\">Low Income and Low Education Counties in Illinois</div>';
+      el.appendChild(title.firstChild);
+    }
+  ")
+```

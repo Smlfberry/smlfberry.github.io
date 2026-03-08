@@ -1,0 +1,69 @@
+---
+title: ""
+output: 
+  html_document:
+    self contained: true
+date: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+il_counties_pct <- readRDS("~/Desktop/final-project-Smlfberry/data/il_counties_pct.rds")
+il_edu <- il_counties_pct %>%
+  mutate(pct_college = pct_bachelors + pct_grad)
+```
+
+```{r make groups, echo=FALSE, message=FALSE, warning=FALSE}
+
+il_edu <- il_edu |>
+  mutate(edu_quartile = ntile(pct_college, 4),
+         edu_group = case_when(
+           edu_quartile == 1 ~ "Under 18%",
+           edu_quartile == 2 ~ "18–21%",
+           edu_quartile == 3 ~ "21–26%",
+           edu_quartile == 4 ~ "Over 26%"
+         ),
+         edu_group = factor(edu_group, levels = c("Under 18%", "18–21%", "21–26%", "Over 26%")))
+
+```
+
+```{r bar chart, echo=FALSE, message=FALSE, warning=FALSE}
+
+il_edu_avg <- il_edu |>
+  group_by(edu_group) |>
+  summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE))
+
+p <- ggplot(il_edu_avg, aes(x = edu_group, y = avg_turnout,
+                             fill = avg_turnout,
+                             text = paste0(edu_group, " college educated",
+                                           "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+  geom_col() +
+  scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
+  scale_y_continuous(labels = scales::percent) +
+  coord_cartesian(ylim = c(0.55, 0.70)) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 12, family = "Georgia"),
+    axis.title.x = element_text(size = 11, family = "Georgia"),
+    plot.title = element_text(size = 16, face = "bold", family = "Georgia")
+  ) +
+  labs(
+    x = "Share of residents with a college degree",
+  )
+
+ggplotly(p, tooltip = "text") %>%
+  plotly::layout(
+    title = list(
+      text = "Counties with Higher Shares of College Graduates Vote at Higher Rates<br><sup>Average turnout by share of residents with a college degree, Illinois 2024</sup>",
+      font = list(size = 20, family = "Georgia, serif", color = "#1a1916"),
+      x = 0,
+      xanchor = "left"
+    ),
+    margin = list(t = 80)
+  )
+
+
+```

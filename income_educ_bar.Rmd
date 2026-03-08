@@ -1,0 +1,55 @@
+---
+title: ""
+output: 
+  html_document:
+    self_contained: true
+date: ""
+---
+
+```{r setup,echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+library(sf)
+il_combined <- readRDS("~/Desktop/final-project-Smlfberry/data/il_combined.rds")
+```
+
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
+
+comparison <- il_combined %>%
+  st_drop_geometry() %>%
+  group_by(category) %>%
+  summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE)) %>%
+  mutate(category = factor(category, levels = c("Both", "Low income only", "Low education only", "Neither")))
+
+p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category,
+                             text = paste0(category, "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+  geom_col() +
+  scale_fill_manual(values = c(
+    "Both" = "#e67e22",
+    "Low income only" = "#2c7a5e",
+    "Low education only" = "#1a3a5c",
+    "Neither" = "#d0cfc9"
+  )) +
+  scale_y_continuous(labels = scales::percent) +
+  coord_cartesian(ylim = c(0.50, 0.72)) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 11, family = "Georgia"),
+    plot.title = element_text(size = 16, face = "bold", family = "Georgia"),
+    plot.subtitle = element_text(size = 11, family = "Georgia")
+  )
+
+ggplotly(p, tooltip = "text") %>%
+  plotly::layout(
+    title = list(
+      text = "Surprisingly, Income and Education do not have Compounding Effects on Turnout<br><sup>Average turnout by county profile, Illinois 2024</sup>",
+      font = list(size = 16, family = "Georgia, serif", color = "#1a1916"),
+      x = 0,
+      xanchor = "left"
+    ),
+    margin = list(t = 80)
+  )
+
+```

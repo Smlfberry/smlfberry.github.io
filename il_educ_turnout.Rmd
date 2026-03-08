@@ -1,0 +1,40 @@
+---
+title: ""
+output: 
+  html_document:
+    self_contained: true
+date: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+il_combined <- readRDS("data/il_combined.rds")
+```
+
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
+p <- ggplot(il_combined, aes(x = pct_college, y = turnout_rate)) +
+  geom_point(alpha = 0.5, size = 2, color = "#1a3a5c") +
+  geom_smooth(method = "lm", se = FALSE, color = "#e67e22", linewidth = 0.8) +
+  scale_x_continuous(labels = scales::percent_format(scale = 1)) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Education vs. Turnout in Illinois",
+    subtitle = "Each dot represents one county, 2024",
+    x = "Share of residents with a college degree", 
+    y = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 11, family = "Georgia"),
+    axis.title.x = element_text(size = 11, family = "Georgia", margin = margin(t = 10)),
+    plot.title = element_text(size = 16, face = "bold", family = "Georgia"),
+    plot.subtitle = element_text(size = 11, family = "Georgia")
+  )
+
+p
+
+
+
+```
