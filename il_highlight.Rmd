@@ -28,7 +28,7 @@ cat('<style>
 
 ```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
 
-il_map <- il_map %>%
+il_map <- il_map |>
   mutate(highlight = ifelse(turnout_rate < 0.60, "Below 60%", "Above 60%"))
 
 pal_highlight <- colorFactor(
@@ -36,7 +36,9 @@ pal_highlight <- colorFactor(
   domain = il_map$highlight
 )
 
-leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
+leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) |>
+  setView(lng = -89.3985, lat = 40.6331, zoom = 6) |>
+
   addPolygons(
     fillColor = ~pal_highlight(highlight),
     fillOpacity = 0.8,
@@ -46,13 +48,13 @@ leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
                     paste0(county, ": ", scales::percent(turnout_rate, accuracy = 0.1)),
                     NA),
     labelOptions = labelOptions(noHide = FALSE)
-  ) %>%
+  ) |>
   addLegend(
     pal = pal_highlight,
     values = ~highlight,
     title = "Turnout Rate",
     position = "bottomright"
-  ) %>%
+  ) |>
   htmlwidgets::onRender("
     function(el, x) {
       el.style.background = '#faf9f6';
