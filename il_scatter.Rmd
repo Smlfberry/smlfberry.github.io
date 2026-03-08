@@ -13,6 +13,13 @@ library(plotly)
 turnout_income <- readRDS("~/Desktop/final-project-Smlfberry/data/turnout_income.rds")
 ```
 
+```{r css, echo=FALSE, results='asis'}
+cat('<style>
+  body { margin: 0; padding: 0; }
+  .main-container { max-width: 100%; margin: 0; padding: 0; }
+  p { margin: 0; }
+</style>')
+```
 
 ```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=3.5, out.width="100%"}
 il_scatter <- turnout_income %>%
