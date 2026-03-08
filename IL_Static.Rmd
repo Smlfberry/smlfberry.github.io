@@ -37,7 +37,6 @@ scale_fill_stepsn(
 ) +
   coord_sf(datum = NA) +
   labs(
-    title = "Voter Turnout Rate by County in Illinois",
     subtitle = "2024 General Presidential Election"
   ) +
   theme_void() +

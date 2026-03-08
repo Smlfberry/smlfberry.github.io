@@ -31,14 +31,8 @@ p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
   )
 
 ggplotly(p, tooltip = "text") %>%
- plotly::layout(
-    title = list(
-      text = "Income vs. Turnout in Illinois<br><sup>Each dot represents one county, 2024</sup>",
-      font = list(size = 20, family = "Georgia, serif", color = "#1a1916"),
-      x = 0,
-      xanchor = "left"
-    ),
-    margin = list(t = 80)
+  plotly::layout(
+    margin = list(t = 20, r = 40, b = 40, l = 40)
   )
 
 ```

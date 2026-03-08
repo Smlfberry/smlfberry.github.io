@@ -126,6 +126,9 @@ body {
   pointer-events: none;
   border: none;
   outline: none;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .viz-frame.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
