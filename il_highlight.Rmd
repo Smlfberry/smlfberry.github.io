@@ -17,6 +17,15 @@ il_counties <- readRDS("data/il_counties.rds")
 il_map <- st_transform(il_counties, crs = 4326)
 ```
 
+```{r css, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+cat('<style>
+  .leaflet-container { background: #faf9f6 !important; }
+  body { background: #faf9f6; margin: 0; padding: 0; }
+  .leaflet { margin: 0 auto; display: block; }
+  html { background: #faf9f6; }
+</style>')
+```
+
 ```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
 
 il_map <- il_map %>%
@@ -48,11 +57,6 @@ leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
     function(el, x) {
       el.style.background = '#faf9f6';
       el.querySelector('.leaflet-container').style.background = '#faf9f6';
-      setTimeout(function() {
-        var title = document.createElement('div');
-        title.innerHTML = '<div style=\"position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:16px;font-weight:bold;color:#1a1916;z-index:999;white-space:nowrap;\">Counties Below 60% Turnout</div>';
-        el.appendChild(title.firstChild);
-      }, 500);
     }
   ")
 
