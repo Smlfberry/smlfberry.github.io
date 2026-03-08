@@ -47,14 +47,12 @@ il_income <- turnout_income %>%
 
 ```
 
-```{r bar chart, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+```{r bar chart, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4.5, out.width="100%"}
 il_income_avg <- il_income %>%
   group_by(income_group) %>%
   summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE))
 p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
-                                fill = avg_turnout,
-                                text = paste0(income_group, " income counties",
-                                              "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+                                fill = avg_turnout)) +
   geom_col() +
   scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
   scale_y_continuous(labels = scales::percent) +
@@ -64,13 +62,8 @@ p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
   theme(
     legend.position = "none",
     axis.text = element_text(size = 12, family = "Georgia"),
-    plot.title = element_text(size = 16, face = "bold", family = "Georgia")
+    plot.background = element_rect(fill = "#faf9f6", color = NA),
+    panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-ggplotly(p, tooltip = "text") %>%
-  plotly::layout(
-    width = 580,
-    height = 380,
-    margin = list(t = 20, r = 20, b = 60, l = 60)
-  ) %>%
-  plotly::config(responsive = TRUE)
+p
 ```
