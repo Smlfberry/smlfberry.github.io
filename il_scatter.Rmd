@@ -34,7 +34,8 @@ p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
 
 ggplotly(p, tooltip = "text") |>
  plotly::layout(
-  margin = list(t = 20, r = 60, b = 40, l = 40)
+  margin = list(t = 20, r = 80, b = 40, l = 40)
 )
+
 
 ```
