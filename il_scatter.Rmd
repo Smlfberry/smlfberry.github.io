@@ -14,10 +14,9 @@ turnout_income <- readRDS("~/Desktop/final-project-Smlfberry/data/turnout_income
 ```
 
 
-```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
 il_scatter <- turnout_income %>%
   filter(state == "IL")
-
 p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
   geom_point(alpha = 0.5, size = 2, color = "#1a3a5c") +
   geom_smooth(method = "lm", se = FALSE, color = "#e67e22", linewidth = 0.8) +
@@ -31,11 +30,10 @@ p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-
-ggplotly(p, tooltip = "text") |>
- plotly::layout(
-  margin = list(t = 20, r = 80, b = 40, l = 40)
-)
-
-
+ggplotly(p, tooltip = "text") %>%
+  plotly::layout(
+    autosize = TRUE,
+    margin = list(t = 20, r = 20, b = 40, l = 40)
+  ) %>%
+  plotly::config(responsive = TRUE)
 ```
