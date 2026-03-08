@@ -1,0 +1,81 @@
+---
+title: ""
+output: html_document
+date: ""
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(tidycensus)
+library(tidyverse)
+library(plotly)
+
+# grab income data
+
+turnout_all <- readRDS("data/turnout_all.rds")
+
+income_data <- get_acs(
+  geography = "county",
+  variables = "B19013_001",
+  state = c("WI", "MI", "IL", "OH", "IN"),
+  year = 2024
+)
+
+# clean it 
+
+income_clean <- income_data |>
+  select(GEOID, estimate) |>
+  rename(geoid = GEOID, median_income = estimate)
+
+turnout_income <- turnout_all |>
+  left_join(income_clean, by = "geoid")
+```
+
+```{r add quintile, echo=FALSE, message=FALSE, warning=FALSE}
+il_income <- turnout_income %>%
+  filter(state == "IL") %>%
+  mutate(income_quartile = ntile(median_income, 4),
+         income_group = case_when(
+           income_quartile == 1 ~ "Lowest",
+           income_quartile == 2 ~ "Low-Middle",
+           income_quartile == 3 ~ "High-Middle",
+           income_quartile == 4 ~ "Highest"
+         ),
+         income_group = factor(income_group, levels = c("Lowest", "Low-Middle", "High-Middle", "Highest")))
+
+```
+
+```{r bar chart, echo=FALSE, message=FALSE, warning=FALSE}
+
+il_income_avg <- il_income %>%
+  group_by(income_group) %>%
+  summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE))
+
+p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
+                                fill = avg_turnout,
+                                text = paste0(income_group, " income counties",
+                                              "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+  geom_col() +
+  scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
+  scale_y_continuous(labels = scales::percent) +
+  coord_cartesian(ylim = c(0.55, 0.75)) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    axis.text = element_text(size = 12, family = "Georgia"),
+    plot.title = element_text(size = 16, face = "bold", family = "Georgia")
+  )
+
+ggplotly(p, tooltip = "text") %>%
+  plotly::layout(
+    title = list(
+      text = "Turnout by Income Quartile<br><sup>Illinois counties, 2024 General Election</sup>",
+      font = list(size = 20, family = "Georgia, serif", color = "#1a1916"),
+      x = 0,
+      xanchor = "left"
+    ),
+    margin = list(t = 80)
+  )
+
+```
