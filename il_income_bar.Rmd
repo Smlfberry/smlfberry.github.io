@@ -68,8 +68,8 @@ p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
   )
 
 ggplotly(p, tooltip = "text") %>%
-  plotly::layout(
-    margin = list(t = 20, r = 40, b = 40, l = 40)
-  )
+ plotly::layout(
+  margin = list(t = 20, r = 60, b = 40, l = 40)
+)
 
 ```

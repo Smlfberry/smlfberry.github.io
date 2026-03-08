@@ -1,6 +1,8 @@
 ---
 title: ''
-output: html_document
+output: 
+  html_document:
+    self_contained: true
 date: ""
 ---
 
@@ -30,9 +32,9 @@ p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
 
-ggplotly(p, tooltip = "text") %>%
-  plotly::layout(
-    margin = list(t = 20, r = 40, b = 40, l = 40)
-  )
+ggplotly(p, tooltip = "text") |>
+ plotly::layout(
+  margin = list(t = 20, r = 60, b = 40, l = 40)
+)
 
 ```
