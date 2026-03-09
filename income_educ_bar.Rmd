@@ -13,16 +13,13 @@ library(sf)
 il_combined <- readRDS("~/Desktop/final-project-Smlfberry/data/il_combined.rds")
 ```
 
-```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
-
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4.5, out.width="100%"}
 comparison <- il_combined %>%
   st_drop_geometry() %>%
   group_by(category) %>%
   summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE)) %>%
   mutate(category = factor(category, levels = c("Both", "Low income only", "Low education only", "Neither")))
-
-p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category,
-                             text = paste0(category, "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category)) +
   geom_col() +
   scale_fill_manual(values = c(
     "Both" = "#e67e22",
@@ -37,19 +34,8 @@ p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category,
   theme(
     legend.position = "none",
     axis.text = element_text(size = 11, family = "Georgia"),
-    plot.title = element_text(size = 16, face = "bold", family = "Georgia"),
-    plot.subtitle = element_text(size = 11, family = "Georgia")
+    plot.background = element_rect(fill = "#faf9f6", color = NA),
+    panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-
-ggplotly(p, tooltip = "text") %>%
-  plotly::layout(
-    title = list(
-      text = "Surprisingly, Income and Education do not have Compounding Effects on Turnout<br><sup>Average turnout by county profile, Illinois 2024</sup>",
-      font = list(size = 16, family = "Georgia, serif", color = "#1a1916"),
-      x = 0,
-      xanchor = "left"
-    ),
-    margin = list(t = 80)
-  )
-
+p
 ```
