@@ -31,7 +31,7 @@ turnout_income <- turnout_all |>
   left_join(income_clean, by = "geoid")
 ```
 
-```{r create scatterplot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r scatter, echo=FALSE, fig.height=5, fig.width=7, message=FALSE, warning=FALSE, out.width="100%"}
 
 p <- ggplot(turnout_income, aes(x = median_income, y = turnout_rate)) +
   geom_point(alpha = 0.5, size = 2, color = "#1a3a5c") +
@@ -54,6 +54,5 @@ p <- ggplot(turnout_income, aes(x = median_income, y = turnout_rate)) +
   )
 
 p
-
 
 ```

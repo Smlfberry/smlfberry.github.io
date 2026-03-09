@@ -21,7 +21,7 @@ state_avg <- turnout_all |>
 
 ```
 
-```{r bar plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4, out.width="100%"}
+```{r bar plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5, out.width="100%"}
 library(ggplot2)
 library(dplyr)
 state_avg <- turnout_all %>%
