@@ -21,11 +21,9 @@ state_avg <- turnout_all |>
 
 ```
 
-```{r bar plot, echo=FALSE, message=FALSE, warning=FALSE}
+```{r bar plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4, out.width="100%"}
 library(ggplot2)
-library(plotly)
 library(dplyr)
-
 state_avg <- turnout_all %>%
   group_by(state) %>%
   summarise(avg_turnout = mean(turnout_rate, na.rm = TRUE)) %>%
@@ -37,10 +35,8 @@ state_avg <- turnout_all %>%
     state == "OH" ~ "Ohio",
     state == "IN" ~ "Indiana"
   ))
-
 p <- ggplot(state_avg, aes(x = avg_turnout, y = reorder(state_full, avg_turnout), 
-                            fill = avg_turnout,
-                            text = paste0(state_full, "<br>Average Turnout: ", scales::percent(avg_turnout, accuracy = 0.1)))) +
+                            fill = avg_turnout)) +
   geom_col() +
   scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
   scale_x_continuous(labels = scales::percent) +
@@ -48,27 +44,10 @@ p <- ggplot(state_avg, aes(x = avg_turnout, y = reorder(state_full, avg_turnout)
   theme_minimal() +
   theme(
     legend.position = "none",
-    plot.title = element_text(size = 16, face = "bold", hjust = 0),
-    axis.text.y = element_text(size = 13),
-    axis.text.x = element_text(size = 11)
+    axis.text.y = element_text(size = 13, family = "Georgia"),
+    axis.text.x = element_text(size = 11, family = "Georgia"),
+    plot.background = element_rect(fill = "#faf9f6", color = NA),
+    panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-
-ggplotly(p, tooltip = "text") %>%
-  layout(
-    title = list(
-      text = "Average Turnout by State<br><sup>Votes Cast by Citizen, Voting Age Population for the 2024 General Presidential Election</sup>",
-      font = list(size = 20, family = "Georgia, serif", color = "#1a1916"),
-      x = 0,
-      xanchor = "left",
-      pad = list(b = 10)
-    ),
-    yaxis = list(
-      tickfont = list(family = "Georgia, serif", size = 13, color = "#1a1916")
-    ),
-    xaxis = list(
-      tickfont = list(family = "Georgia, serif", size = 11, color = "#6b6860")
-    ),
-    margin = list(t = 80)
-  )
-
+p
 ```
