@@ -1,6 +1,5 @@
 /* ══════════════════════════════════════════
-   THE MISSING MIDWEST — STYLES
-   Edit colors in :root to restyle everything
+   :root = restyle 
    ══════════════════════════════════════════ */
 
 :root {
@@ -13,7 +12,7 @@
   --text:        #1a1916;       /* main text */
   --text-muted:  #6b6860;       /* secondary text */
   --text-dim:    #a8a49c;       /* labels / hints */
-  --accent:      #c0392b;       /* primary red */
+  --accent:      #e67e22;       /* primary red */
   --accent-2:    #e67e22;       /* warm orange */
   --accent-3:    #2c7a5e;       /* teal for data */
   --accent-light:#fdecea;       /* light red tint */
@@ -114,7 +113,7 @@ body {
   max-width: 1060px; margin: 0 auto; padding: 0 2.5rem;
 }
 .sticky-side {
-  position: sticky; top: 56px; width: 54%; flex-shrink: 0;
+  position: sticky; top: 56px; width: 65%; flex-shrink: 0;
   height: calc(100vh - 72px); display: flex; flex-direction: column;
   padding: 1.5rem 2.5rem 1rem 0;
 }
@@ -126,7 +125,7 @@ body {
   pointer-events: none;
   border: none;
   outline: none;
-  background: #ffffff;
+  background: #faf9f6;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
@@ -163,7 +162,7 @@ body {
 .prog-dot.active { background: var(--accent); border-color: var(--accent); transform: scale(1.5); }
 
 /* text steps */
-.steps-side { flex: 1; padding: 4vh 0 28vh 2.5rem; }
+.steps-side { flex: 1; padding: 4vh 0 28vh 1.5rem; }
 .step { min-height: 75vh; display: flex; align-items: center; padding: 0.75rem 0; }
 .step-card {
   background: var(--surface); border: 1px solid var(--border);

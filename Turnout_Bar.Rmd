@@ -50,4 +50,6 @@ p <- ggplot(state_avg, aes(x = avg_turnout, y = reorder(state_full, avg_turnout)
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
 p
+
+ggsave("Turnout_Bar.png", p)
 ```

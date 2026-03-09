@@ -19,8 +19,6 @@ p <- ggplot(il_combined, aes(x = pct_college, y = turnout_rate)) +
   scale_x_continuous(labels = scales::percent_format(scale = 1)) +
   scale_y_continuous(labels = scales::percent) +
   labs(
-    title = "Education vs. Turnout in Illinois",
-    subtitle = "Each dot represents one county, 2024",
     x = "Share of residents with a college degree", 
     y = NULL
   ) +
@@ -28,12 +26,12 @@ p <- ggplot(il_combined, aes(x = pct_college, y = turnout_rate)) +
   theme(
     legend.position = "none",
     axis.text = element_text(size = 11, family = "Georgia"),
-    axis.title.x = element_text(size = 11, family = "Georgia", margin = margin(t = 10)),
+    axis.title.x = element_text(size = 12, family = "Georgia", margin = margin(t = 10)),
     plot.title = element_text(size = 16, face = "bold", family = "Georgia"),
     plot.subtitle = element_text(size = 11, family = "Georgia")
   )
 
-p
+ggsave("il_educ_turnout.png", p)
 
 
 

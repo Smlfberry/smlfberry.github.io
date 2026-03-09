@@ -18,7 +18,7 @@ il_counties <- readRDS("data/il_counties.rds")
 
 step_cols <- viridisLite::viridis(5, option = "viridis", direction = -1)
 
-il_counties |> 
+p <- il_counties |> 
   ggplot() +
   geom_sf(aes(fill = turnout_rate), color = "white", linewidth = 0.2) +
 scale_fill_stepsn(
@@ -50,7 +50,7 @@ scale_fill_stepsn(
     legend.key.height = unit(0.35, "cm"),
     legend.spacing.x  = unit(0, "pt")
   ) 
-
+ggsave("IL_Static.png", p,  bg="#faf9f6")
 
 ```
 

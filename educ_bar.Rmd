@@ -42,9 +42,9 @@ p <- ggplot(il_edu_avg, aes(x = edu_group, y = avg_turnout, fill = avg_turnout))
   theme(
     legend.position = "none",
     axis.text = element_text(size = 12, family = "Georgia"),
-    axis.title.x = element_text(size = 11, family = "Georgia"),
+    axis.title.x = element_text(size = 11, family = "Georgia", margin = margin(t = 10)),
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-p
+ggsave("educ_bar.png", p)
 ```

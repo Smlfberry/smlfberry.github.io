@@ -21,7 +21,7 @@ cat('<style>
 </style>')
 ```
 
-```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=3.5, out.width="100%"}
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=7, fig.height=5, out.width="100%"}
 il_scatter <- turnout_income %>%
   filter(state == "IL")
 p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
@@ -37,5 +37,5 @@ p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-p
+ggsave("IL_Scatter.png", p, width=6, height=4, bg="#faf9f6")
 ```

@@ -53,4 +53,6 @@ p <- ggplot(turnout_income, aes(x = median_income, y = turnout_rate)) +
 
 p
 
+ggsave("Turnout_Scatter.png", p)
+
 ```

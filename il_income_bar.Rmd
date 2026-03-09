@@ -73,5 +73,5 @@ p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-p
+ggsave("IL_income_bar.png", p,  bg="#faf9f6")
 ```

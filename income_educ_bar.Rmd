@@ -37,5 +37,5 @@ p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category)) +
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-p
+ggsave("income_educ_bar.png", p)
 ```
