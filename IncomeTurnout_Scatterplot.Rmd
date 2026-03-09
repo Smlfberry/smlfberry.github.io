@@ -39,8 +39,6 @@ p <- ggplot(turnout_income, aes(x = median_income, y = turnout_rate)) +
   scale_x_continuous(labels = scales::dollar) +
   scale_y_continuous(labels = scales::percent) +
   labs(
-    title = "Income vs. Turnout Across Five Midwest States",
-    subtitle = "Each dot represents one county, 2024",
     x = NULL, y = NULL
   ) +
   theme_minimal() +
