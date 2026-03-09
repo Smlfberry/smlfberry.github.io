@@ -36,12 +36,25 @@ il_combined <- il_counties_pct_sf %>%
   )
 ```
 
+
+```{r css, echo=FALSE, results='asis'}
+
+# make background consistent 
+
+cat('<style>
+  body { margin: 0; padding: 0; background: #faf9f6; }
+  html { background: #faf9f6; }
+  .leaflet-container { background: #faf9f6 !important; }
+  .leaflet-control-zoom { display: none; }
+</style>')
+```
+
 ```{r map of educ and income, echo=FALSE, message=FALSE, warning=FALSE}
 pal_combined <- colorFactor(
   palette = c(
-    "Both" = "#e67e22",
-    "Low income only" = "#2c7a5e",
-    "Low education only" = "#1a3a5c",
+    "Both" = "#264653",
+    "Low income only" = "#2a9d8f",
+    "Low education only" = "#e9c46a",
     "Neither" = "#d0cfc9"
   ),
   domain = il_combined$category
@@ -59,9 +72,9 @@ leaflet(il_combined, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
   ) %>%
   addLegend(
     pal = pal_combined,
-    values = ~category[category != "Neither"],
+    values = ~category,
     title = "County Profile",
-    position = "bottomright"
+    position = "bottomleft"
   ) %>%
   htmlwidgets::onRender("
     function(el, x) {
@@ -70,7 +83,7 @@ leaflet(il_combined, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
       setTimeout(function() {
         var map = HTMLWidgets.find(el).getMap();
         map.invalidateSize();
-        map.fitBounds([[36.0, -92.5], [43.5, -86.0]]);
+        map.fitBounds([[36.9, -91.5], [42.5, -87.0]]);
       }, 300);
     }
   ")

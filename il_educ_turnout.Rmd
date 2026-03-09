@@ -31,7 +31,7 @@ p <- ggplot(il_combined, aes(x = pct_college, y = turnout_rate)) +
     plot.subtitle = element_text(size = 11, family = "Georgia")
   )
 
-ggsave("il_educ_turnout.png", p)
+ggsave("il_educ_turnout.png", p, bg="#faf9f6")
 
 
 

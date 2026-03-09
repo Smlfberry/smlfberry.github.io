@@ -22,9 +22,9 @@ comparison <- il_combined %>%
 p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category)) +
   geom_col() +
   scale_fill_manual(values = c(
-    "Both" = "#e67e22",
-    "Low income only" = "#2c7a5e",
-    "Low education only" = "#1a3a5c",
+    "Both" = "#264653",
+    "Low income only" = "#2a9d8f",
+    "Low education only" = "#e9c46a",
     "Neither" = "#d0cfc9"
   )) +
   scale_y_continuous(labels = scales::percent) +
@@ -37,5 +37,5 @@ p <- ggplot(comparison, aes(x = category, y = avg_turnout, fill = category)) +
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-ggsave("income_educ_bar.png", p)
+ggsave("income_educ_bar.png", p, bg="#faf9f6")
 ```

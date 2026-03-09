@@ -46,5 +46,5 @@ p <- ggplot(il_edu_avg, aes(x = edu_group, y = avg_turnout, fill = avg_turnout))
     plot.background = element_rect(fill = "#faf9f6", color = NA),
     panel.background = element_rect(fill = "#faf9f6", color = NA)
   )
-ggsave("educ_bar.png", p)
+ggsave("educ_bar.png", p, bg="#faf9f6")
 ```
