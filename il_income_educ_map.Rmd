@@ -37,7 +37,6 @@ il_combined <- il_counties_pct_sf %>%
 ```
 
 ```{r map of educ and income, echo=FALSE, message=FALSE, warning=FALSE}
-
 pal_combined <- colorFactor(
   palette = c(
     "Both" = "#e67e22",
@@ -47,9 +46,7 @@ pal_combined <- colorFactor(
   ),
   domain = il_combined$category
 )
-
 il_combined <- st_transform(il_combined, crs = 4326)
-
 leaflet(il_combined, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
   addPolygons(
     fillColor = ~pal_combined(category),
@@ -62,15 +59,19 @@ leaflet(il_combined, options = leafletOptions(scrollWheelZoom = FALSE)) %>%
   ) %>%
   addLegend(
     pal = pal_combined,
-   values = ~category[category != "Neither"],
+    values = ~category[category != "Neither"],
     title = "County Profile",
     position = "bottomright"
   ) %>%
   htmlwidgets::onRender("
     function(el, x) {
-      var title = document.createElement('div');
-      title.innerHTML = '<div style=\"position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:Georgia,serif;font-size:16px;font-weight:bold;color:#1a1916;z-index:999;white-space:nowrap;\">Low Income and Low Education Counties in Illinois</div>';
-      el.appendChild(title.firstChild);
+      el.style.background = '#faf9f6';
+      el.querySelector('.leaflet-container').style.background = '#faf9f6';
+      setTimeout(function() {
+        var map = HTMLWidgets.find(el).getMap();
+        map.invalidateSize();
+        map.fitBounds([[36.0, -92.5], [43.5, -86.0]]);
+      }, 300);
     }
   ")
 ```
