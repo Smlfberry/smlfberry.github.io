@@ -25,7 +25,7 @@ cat('<style>
 il_scatter <- turnout_income %>%
   filter(state == "IL")
 p <- ggplot(il_scatter, aes(x = median_income, y = turnout_rate)) +
-  geom_point(alpha = 0.5, size = 2, color = "#1a3a5c") +
+  geom_point(alpha = 0.5, size = 2, color = "#2a9d8f") +
   geom_smooth(method = "lm", se = FALSE, color = "#e67e22", linewidth = 0.8) +
   scale_x_continuous(labels = scales::dollar) +
   scale_y_continuous(labels = scales::percent) +

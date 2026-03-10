@@ -26,19 +26,22 @@ cat('<style>
 </style>')
 ```
 
+```{r css 2, echo=FALSE, results='asis'}
+cat('<style>
+  body { margin: 0; padding: 0; background: #faf9f6; }
+  html { background: #faf9f6; }
+  .leaflet-container { background: #faf9f6 !important; }
+  .leaflet-control-zoom { display: none; }
+</style>')
+```
 ```{r plot, echo=FALSE, message=FALSE, warning=FALSE}
-
 il_map <- il_map |>
   mutate(highlight = ifelse(turnout_rate < 0.60, "Below 60%", "Above 60%"))
-
 pal_highlight <- colorFactor(
   palette = c("Above 60%" = "#d0cfc9", "Below 60%" = "#e67e22"),
   domain = il_map$highlight
 )
-
 leaflet(il_map, options = leafletOptions(scrollWheelZoom = FALSE)) |>
-fitBounds(-91.5, 36.9, -87.0, 42.5) |>
-
   addPolygons(
     fillColor = ~pal_highlight(highlight),
     fillOpacity = 0.8,
@@ -53,13 +56,17 @@ fitBounds(-91.5, 36.9, -87.0, 42.5) |>
     pal = pal_highlight,
     values = ~highlight,
     title = "Turnout Rate",
-    position = "bottomright"
+    position = "bottomleft"
   ) |>
   htmlwidgets::onRender("
     function(el, x) {
       el.style.background = '#faf9f6';
       el.querySelector('.leaflet-container').style.background = '#faf9f6';
+      setTimeout(function() {
+        var map = HTMLWidgets.find(el).getMap();
+        map.invalidateSize();
+        map.fitBounds([[36.9, -91.5], [42.5, -87.0]]);
+      }, 300);
     }
   ")
-
 ```

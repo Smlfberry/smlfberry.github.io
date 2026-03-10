@@ -62,7 +62,7 @@ il_income_avg <- il_income %>%
 p <- ggplot(il_income_avg, aes(x = income_group, y = avg_turnout,
                                 fill = avg_turnout)) +
   geom_col() +
-  scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
+  scale_fill_gradient(low = "#c7e9e0", high = "#1a7a6e") +
   scale_y_continuous(labels = scales::percent) +
   coord_cartesian(ylim = c(0.55, 0.75)) +
   labs(x = NULL, y = NULL) +

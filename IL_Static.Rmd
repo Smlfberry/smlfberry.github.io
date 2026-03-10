@@ -36,9 +36,6 @@ scale_fill_stepsn(
   )
 ) +
   coord_sf(datum = NA) +
-  labs(
-    subtitle = "2024 General Presidential Election"
-  ) +
   theme_void() +
   theme(
     plot.title = element_text(size = 16, face = "bold", hjust = 0.5),

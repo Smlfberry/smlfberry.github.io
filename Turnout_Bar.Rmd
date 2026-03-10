@@ -38,7 +38,7 @@ state_avg <- turnout_all %>%
 p <- ggplot(state_avg, aes(x = avg_turnout, y = reorder(state_full, avg_turnout), 
                             fill = avg_turnout)) +
   geom_col() +
-  scale_fill_gradient(low = "#c8e0f0", high = "#1a3a5c") +
+  scale_fill_gradient(low = "#c7e9e0", high = "#1a7a6e") +
   scale_x_continuous(labels = scales::percent) +
   labs(x = NULL, y = NULL) +
   theme_minimal() +
