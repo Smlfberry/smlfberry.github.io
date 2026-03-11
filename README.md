@@ -36,8 +36,11 @@ Finally, the findings section provides the three main takeaways from the educati
 
 **Results and Discussion**
 The main takeaways from the website are as follows:
+
 Income is a consistent predictor of turnout across Illinois
+
 Education itself also may be a slightly weaker predictor, and has quite different effects than income, proving they are not simply two outlets of the same measure. 
+
 While both low-income and low-education counties do have lower turnout in Illinois, their effects do not compound.  
 
 In short, the website follows the five core data visualization principles extremely well. The data is clearly cited, and visualizations are displayed in a truthful manner that does not distort the data. The interactive graphics, clear narrative accompaniment, and easy flow of the website make it very functional for the reader to gain the information presented. The design is clear and minimalistic while also incorporating visually appealing color palettes and visualizations — leading to a very beautiful design. The narratives that provide statistical and substantive takeaways and connect enough visualization to one another make the overall website very insightful. Finally, the broad framing in the index about the broader issue (“Millions of Midwesterners Didn’t Vote”), as well as the findings section, once again connected the results to the broader issue of voter mobilization and unequal representation in voting, leading to an enlightening experience. 
