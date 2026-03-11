@@ -1,58 +1,44 @@
-# The Missing Midwest
 
-**Live site:** https://smlfberry.github.io/final-project-Smlfberry
+# Link to Website
+https://smlfberry.github.io/index.html
 
-A data visualization project exploring voter turnout inequality across five Midwest states, with a deep dive into Wisconsin's county-level patterns by income and education.
+# Project Description
 
-## Research Question
+This project uses data from the American Community Survey as well as state election committee turnout data from Ohio,
+Illinois, Wisconsin, Michigan and Indiana to analyze how income and education relate to voter turnout in the Midwest,
+and Illinois in particular. 
 
-Who doesn't vote in the Midwest — and what do those communities have in common? This project examines county-level voter turnout patterns in Wisconsin, exploring how income and education predict participation gaps, and what that means for political representation.
+# Replication
 
-## Site Structure
+All data needed to reproduce the findings are included in the "data" folder as rds files. Additional income data is 
+pulled using the tidycensus package. 
 
-| File | Page |
-|------|------|
-| `index.html` | Landing page — overview charts for all 5 states |
-| `income.html` | Scrollytelling — Wisconsin turnout × income |
-| `education.html` | Scrollytelling — Wisconsin turnout × education |
-| `findings.html` | Combined findings + takeaways |
-| `css/style.css` | All styles (edit colors in `:root` at the top) |
-| `js/main.js` | Scrollytelling logic + scatter dot generation |
+Packages required for replication include the following:
+- tidyverse
+- leaflet
+- sf
+- tidycensus 
 
-## Data Sources
+# Full Narrative/Design Defense
 
-- **CCES** (Cooperative Congressional Election Study)
-- **MIT Election Data and Science Lab** — county-level election returns
-- **U.S. Census Bureau / ACS** — county demographics (income, education)
+**Introduction and Data**
+	Free and fair elections are a cornerstone of American democracy. Still, there are great variations in terms of who actually votes, meaning many groups and people go unrepresented as a result. Voter turnout rate is perhaps the most fundamental indicator of participation. Across the U.S., there are large discrepancies in voter turnout from state to state. Looking specifically at the Midwest, states clustered geographically even have massive variation — especially when comparing neighboring states with lower turnout, like Indiana or Illinois, to Wisconsin and Michigan, which have very high average turnout. Analyzing the individual patterns of various states to understand where exactly these turnout disparities exist and what demographic patterns are associated with the disparities is key to identifying potential barriers to voting and where to target outreach efforts. 
+	As such, this project examines county-level voter turnout data and demographic information from the 2024 general Presidential Election across five Midwestern states: Ohio, Illinois, Indiana, Wisconsin, and Michigan. Specifically, this project focuses on Illinois as an individual case study to identify more in-depth differences in terms of income and education and how those may impact turnout state-wide. The goal of the visualizations is to provide an easy and accessible way for viewers to explore the patterns of turnout and how specifically income and education may help to explain the disparities in turnout within Illinois. 
+	The voter turnout data comes from the respective state election committees’ websites, and the overall turnout rate is calculated using Citizen Voting Age Population (CVAP), which is everyone who is both a citizen and of legal age to vote in a given region. The demographic information, including educational attainment and income level, comes from the American Community Survey (ACS) 2024 5-year estimate, which comes from the U.S. Census Bureau. 
 
-## Deploying to GitHub Pages
+**Methods**
+First, I will explain the website-wide design choices before diving into the page and visualization-specific choices. The overall website consists of a mix of bar charts, scatterplots, and chloropleth maps. These three in particular were chosen not only to add visual variation in terms of distinct visualization types, but also because of how the information each one displays complements the others. Generally, the chloropleths display overall geographic patterns — good for setting the stage for the other, more specific plots. The scatterplots show the relationship between variables such as education and turnout and visualize how strongly correlated the two variables may be. Finally, the bar charts show group comparisons to analyze whether specific patterns, such as those displayed in the scatterplots, hold up in comparison to one another. In terms of the theme and color palette, I opted for a somewhat muted beige as the primary background — this makes it a bit more interesting and polished than plain white, while also being minimalistic enough to allow the attention to stay on the visualizations and accompanying narratives. The orange highlights provided a nice contrast to the beige and also allowed me to curb using the more typical red highlight to avoid possible political connotations associated with the color. The orange also looks very nice next to the teal palettes used for the bar and scatterplots — once again providing stark contrast, such as with the trend line or highlighted choropleth, without clashing with the rest of the color palette. Additionally, the viridis palette was used when more colors were needed, such as in the income chloropleth or the education and income comparison. This allows it to situate nicely with the teal and orange colors, and avoid using the typical democrat blue — instead using a more teal, green, and purple palette. 
+Looking specifically at the index, I first chose to have a large, bold title in the center to capture the viewer’s attention. Since there is more information needed underneath, the viewer needs a reason to scroll — something which is done by capturing their attention with the bold orange, visually interesting font, and subsequent question and broad answer underneath. The two plots underneath show region-wide patterns, meant to provide context and intuition before diving into the Illinois-specific pages. First, the bar plot shows the overall variation between states, which shows the large turnout differences generally, framing the overall issue. The scatterplot next to it hints at a possible reason for these differences without going into depth and leaving it open enough for the viewer to want to continue exploring. The accompanying narrative connects the two by framing the overall variation in turnout, then going a bit more in-depth on how a possible explanation is income differences. Then, the footer has links to explore the other pages and further explain the patterns hinted at in the two initial visualizations. 
+The layout for the two main pages — income and education — is in scrollyelling format. I chose this because it allows the narrative to unfold slowly and makes the experience much more interactive for the viewer. Not only does their scrolling impact the display, but it also allows for the viewer to go on a linear journey through the visualizations and narratives, each one building off of the last and setting up the next. 
+Moving on to the income page, it opens with a large, bold question meant to intrigue the viewer into discovering the answer as they scroll. The first chloropleth and accompanying narrative paint the overall picture in terms of turnout across Illinois. This is done to set the stage that there is substantial within-state variation in terms of participation. The next choropleth highlights the low-turnout counties specifically, drawing attention to the areas were particpation is low. Since there is less variation in this map, a tooltip was added via Leaflet to allow the viewer to explore the counties with low turnout and what their exact participation was. This choropleth has the same data as the first, but narrows the focus to low-turnout in particular, setting the stage to explore why these specific areas may differ from the rest of the state. The next bar plot provides more context for the income differences in particular. It shows the overall trend that counties with higher average income vote at higher rates. Since there was no tooltip added due to rendering issues, the narrative highlights specific data points to allow for a more substantive and informative takeaway. This is built upon further in the next scatterplot, which shows very clearly that higher-income counties vote more. Since each county is visualized as a dot, this allows for more individual variation from the first plot, which groups all counties into four buckets. Additionally, it shows the very strong, overall trend of higher turnout in higher-income counties. The narrative explains this, then prompts the reader to explore the next page by stating that while this is a compelling explanation, there are more factors to explore — one of which is education. 
+The education page takes a very similar format to the income page — once again opening with a punchy question to gain intrigue. The first choropleth builds on the information from the low-income and provides a direct bridge from the income to the education section. The map shows how low-income areas overlap with areas of low education. The map highlights which counties have both low income and low education, setting the stage for these to be analyzed further in the later visualizations. Before diving into those counties, the next bar chart looks at education by itself, showing a similar trend to income, where counties with a higher amount of college-educated individuals vote at higher rates. This provides a rationale for why education is worthy of analysis, since the bar chart paints a clear trend of increased education rate and increased turnout. The next scatterplot builds on the barplot to see how well education and turnout are correlated when analyzing individual counties. The narrative builds on it by describing that while present, the pattern is weaker than it was found in income. This pattern of barplot and scatterplot also allows the viewer to make direct comparisons to the previous income page, which has the same format. Finally, the last bar plot zooms in on the initial choropleth to see how each grouping of low-income and low-education impacts turnout. This final graph allows the two pages to feel very connected and part of the same narrative, since the plot incorporates the findings and data from the income section and combines them with the new education aspect. 
+Finally, the findings section provides the three main takeaways from the education and income analysis pages, and as such, no additional visualizations were added. The page was kept simple and straightforward to highlight the takeaway itself. This page is meant to serve as an informative conclusion and focuses on the narrative text as opposed to adding extra visualizations. The large bolded text section about the three main takeaways provides a shorter and enlightening takeaway by expanding the findings to their broader implications, and allows the viewer to connect the case-study findings of income and education in Illinois to the bigger picture setup at the index page. The three takeaways combine the prevalent statistical findings with clear interpretations — overall synthesizing the ten visualizations and highlighting the main patterns that emerged from them. 
 
-1. Make sure all files are pushed to the `main` branch
-2. Go to **Settings → Pages**
-3. Set source to **Deploy from branch → main → / (root)**
-4. Site will be live at `https://smlfberry.github.io/final-project-Smlfberry`
+**Results and Discussion**
+The main takeaways from the website are as follows:
+Income is a consistent predictor of turnout across Illinois
+Education itself also may be a slightly weaker predictor, and has quite different effects than income, proving they are not simply two outlets of the same measure. 
+While both low-income and low-education counties do have lower turnout in Illinois, their effects do not compound.  
 
-## Replacing Placeholder Charts
+In short, the website follows the five core data visualization principles extremely well. The data is clearly cited, and visualizations are displayed in a truthful manner that does not distort the data. The interactive graphics, clear narrative accompaniment, and easy flow of the website make it very functional for the reader to gain the information presented. The design is clear and minimalistic while also incorporating visually appealing color palettes and visualizations — leading to a very beautiful design. The narratives that provide statistical and substantive takeaways and connect enough visualization to one another make the overall website very insightful. Finally, the broad framing in the index about the broader issue (“Millions of Midwesterners Didn’t Vote”), as well as the findings section, once again connected the results to the broader issue of voter mobilization and unequal representation in voting, leading to an enlightening experience. 
 
-Each placeholder in the HTML is marked with a comment like:
-```html
-<!-- EDIT: replace with your Plotly chart -->
-<!-- TO REPLACE: add <div id="your-chart-id"></div> and call Plotly.newPlot(...) -->
-```
-
-To swap in a real Plotly chart:
-1. Add `<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>` to the `<head>`
-2. Replace the placeholder div with `<div id="my-chart" style="width:100%;height:100%"></div>`
-3. Add a `<script>` block after the div calling `Plotly.newPlot('my-chart', data, layout)`
-
-## Editing Text
-
-All text is editable directly on GitHub:
-1. Click any `.html` file in the repo
-2. Click the pencil ✏️ icon (top right)
-3. Find text marked with `<!-- EDIT: ... -->` comments
-4. Make your changes and click **Commit changes**
-
-## Changing Colors or Fonts
-
-Open `css/style.css`. The very top of the file has a `:root { }` block — change any hex value there and it updates everywhere on the site.
